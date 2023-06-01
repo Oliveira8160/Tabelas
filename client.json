@@ -2,6 +2,8 @@
   "clients" :
   [
     {"id" : 1, "nome" : "Jose", "email" : "gijed@gmail.com", "telefone" : 11258469871 },
-    {"id" : 2, "nome" : "Sandro", "email" : "guerri@gmail.com", "telefone" : 11581364452 }
+    {"id" : 2, "nome" : "Sandro", "email" : "guerri@gmail.com", "telefone" : 11581364452 },
+    {"id" : 3, "nome" : "Unaldo", "email" : "legue@gmail.com", "telefone" : 1147536612 },
+    {"id" : 4, "nome" : "Inalva", "email" : "jerremi@gmail.com", "telefone" : 1158210132 }
   ]
 }
