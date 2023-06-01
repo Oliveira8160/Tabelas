@@ -1,0 +1,7 @@
+{
+  "clients" :
+  [
+    {"id" : 1, "nome" : "Jose", "email" : "gijed@gmail.com", "telefone" : 11258469871 },
+    {"id" : 2, "nome" : "Sandro", "email" : "guerri@gmail.com", "telefone" : 11581364452 }
+  ]
+}
