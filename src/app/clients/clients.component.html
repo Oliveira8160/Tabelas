@@ -26,6 +26,7 @@
 
       <div class="mb-3 d-flex justify-content-center">
         <button class="btn btn-outline-dark" (click)="save()" >Salvar</button>
+        <button class="btn btn-outline-dark" style="margin-left: 50px;" (click)="recarregar()" >resetar</button>
       </div>
 
     </form>
@@ -44,6 +45,7 @@
       <th scope="col">Nome</th>
       <th scope="col">Email</th>
       <th scope="col">Telefone</th>
+      <th scope="col">Opções</th>
     </tr>
   </thead>
   <tbody>
@@ -52,6 +54,10 @@
       <td>{{client.nome}}</td>
       <td>{{client.email}}</td>
       <td>{{client.telefone}}</td>
+      <td>
+        <button class="btn btn-dark" (click)="edit(client)" style="margin-right: 8px;">Editar</button>
+        <button class="btn btn-dark" (click)="delete(client)" >Excluir</button>
+      </td>
     </tr>
   </tbody>
 </table>

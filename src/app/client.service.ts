@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ClientService {
 
-  url = "http://localhost:3000/clients"
+  url = "http://localhost:3000/clients/"
 
   constructor(private http : HttpClient) { }
 
@@ -19,8 +19,18 @@ export class ClientService {
   }
 
   save(client : client) : Observable<client>{
-
     return this.http.post<client>(this.url, client);
-
   }
+  update(client : client) : Observable<client>{
+    return this.http.put<client>(`${this.url}/${client.id}`, client);
+  }
+  delete(client : client) : Observable<void>{
+
+    return this.http.delete<void>(this.url + "/" + client.id);
+
+    // OU
+
+    //return this.http.delete<void>(`${this.url}/${client.id}`);
+  }
+
 }
