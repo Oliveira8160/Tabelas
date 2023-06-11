@@ -1,0 +1,16 @@
+{
+  "fornecedores": [
+    {
+      "id": 1,
+      "nome": "hgefdshgh",
+      "cnpj": 1563456345,
+      "telefone": 528937543254
+    },
+    {
+      "id": 2,
+      "nome": "gjrjrtan",
+      "cnpj": 544444443,
+      "telefone": 1543
+    }
+  ]
+}
