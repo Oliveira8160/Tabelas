@@ -1,4 +1,12 @@
 {
+  "clients": [
+    {
+      "id": 1,
+      "nome": "Josivaldo",
+      "email": "joserino@gmail.com",
+      "telefone": 118324659542
+    }
+  ],
   "fornecedores": [
     {
       "id": 1,
