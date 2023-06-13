@@ -1,22 +1,30 @@
 {
   "clients": [
     {
-      "id": 1,
-      "nome": "Josivaldo",
-      "email": "joserino@gmail.com",
-      "telefone": 118324659542
+      "id": 4,
+      "Primeiro_nome": "matheus ",
+      "Segundo_nome": "marques",
+      "email": "matheus@gmail.com",
+      "telefone": 116666666
+    },
+    {
+      "id": 5,
+      "Primeiro_nome": "Joselino",
+      "Segundo_nome": "Fausto",
+      "email": "hulgoSilveira@gmail.com",
+      "telefone": 116531685
     }
   ],
   "fornecedores": [
     {
       "id": 1,
-      "nome": "hgefdshgh",
+      "nome": "TorresTariot",
       "cnpj": 1563456345,
       "telefone": 528937543254
     },
     {
       "id": 2,
-      "nome": "gjrjrtan",
+      "nome": "girgian",
       "cnpj": 544444443,
       "telefone": 1543
     }

@@ -15,8 +15,12 @@
 
       <div class="mb-3">
         <label for="nome" class="form-label">Nome:</label>
-        <input type="text" formControlName="nome" class="form-control" id="nome" placeholder="Julho Ceverino">
-        <div *ngIf="submitted && nome.invalid" class="text-danger">Nome Invalido</div>
+        <div class="input-group">
+          <input type="text" formControlName="Primeiro_nome" aria-label="First name" class="form-control" id="Primeiro nome" placeholder="Julho">
+          <input type="text" formControlName="Segundo_nome" aria-label="Last name" class="form-control" id="Segundo nome" placeholder="Ceverino">
+        </div>
+        <div *ngIf="submitted && Primeiro_nome.invalid" class="text-danger">Nome Invalido</div>
+        <div *ngIf="submitted && Segundo_nome.invalid" class="text-danger">Sobrenome Invalido</div>
       </div>
 
       <div class="mb-3">
@@ -62,7 +66,7 @@
   <tbody>
     <tr *ngFor="let client of clients">
       <th scope="row">{{client.id}}</th>
-      <td>{{client.nome}}</td>
+      <td>{{client.Primeiro_nome}} {{client.Segundo_nome}}</td>
       <td>{{client.email}}</td>
       <td>{{client.telefone}}</td>
       <td>

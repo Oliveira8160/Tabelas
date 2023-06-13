@@ -23,7 +23,8 @@ export class ClientsComponent implements OnInit{
       this.formGroupClient = formBuilder.group({
 
         id : [''],
-        nome : ['', [Validators.required]],
+        Primeiro_nome : ['', [Validators.required]],
+        Segundo_nome : ['', [Validators.required]],
         email : ['', [Validators.email]],
         telefone : ['', [Validators.required]]
       })
@@ -94,8 +95,11 @@ export class ClientsComponent implements OnInit{
     this.submitted = false;
   }
 
-  get nome() : any {
-    return this.formGroupClient.get("nome");
+  get Primeiro_nome() : any {
+    return this.formGroupClient.get("Primeiro_nome");
+  }
+  get Segundo_nome() : any {
+    return this.formGroupClient.get("Segundo_nome");
   }
   get email() : any {
     return this.formGroupClient.get("email");
