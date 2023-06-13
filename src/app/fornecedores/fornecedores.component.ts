@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { fornecedor } from '../fornecedor';
 import { FornecedorService } from './../fornecedor.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-fornecedor',
@@ -14,6 +14,7 @@ export class FornecedoresComponent implements OnInit{
   fornecedores : fornecedor[] = [];
   formGroupFornecedor : FormGroup;
   isEditing : boolean = false;
+  submitted : boolean = false;
 
   constructor (private FornecedorService : FornecedorService,
                private formBuilder : FormBuilder
@@ -22,9 +23,9 @@ export class FornecedoresComponent implements OnInit{
       this.formGroupFornecedor = formBuilder.group({
 
         id : [''],
-        nome : [''],
-        cnpj : [''],
-        telefone : ['']
+        nome : ['', [Validators.required]],
+        cnpj : ['' ,[Validators.required]],
+        telefone : ['', [Validators.required]]
       })
 
     }
@@ -40,30 +41,41 @@ export class FornecedoresComponent implements OnInit{
   }
 
   save(){
-    if(this.isEditing){
+    this.submitted = true;
 
-      this.FornecedorService.update(this.formGroupFornecedor.value).subscribe
-      ({
-
-        next : () => {
-          this.loadFornecedor();
-          this.formGroupFornecedor.reset();
-          this.isEditing = false;
-        }
-
-      })
-
-    }
-    else
+    if(this.formGroupFornecedor.valid)
     {
-      this.FornecedorService.save(this.formGroupFornecedor.value).subscribe
-          ({
-              next : data => {
-                this.fornecedores.push(data)
-                this.formGroupFornecedor.reset()
-              }
-          })
+
+      if(this.isEditing){
+
+        this.FornecedorService.update(this.formGroupFornecedor.value).subscribe
+        ({
+
+          next : () => {
+            this.loadFornecedor();
+            this.formGroupFornecedor.reset();
+            this.isEditing = false;
+            this.submitted = false;
+          }
+
+        })
+
+      }
+      else
+      {
+        this.FornecedorService.save(this.formGroupFornecedor.value).subscribe
+            ({
+                next : data => {
+                  this.fornecedores.push(data)
+                  this.formGroupFornecedor.reset()
+                  this.submitted = false;
+                }
+            })
+      }
+
     }
+
+
   }
 
   edit(fornecedor : fornecedor){
@@ -80,6 +92,16 @@ export class FornecedoresComponent implements OnInit{
   recarregar()
   {
     this.formGroupFornecedor.reset();
+  }
+
+  get nome() : any {
+    return this.formGroupFornecedor.get("nome");
+  }
+  get cnpj() : any {
+    return this.formGroupFornecedor.get("cnpj");
+  }
+  get telefone() : any {
+    return this.formGroupFornecedor.get("telefone");
   }
 
 }

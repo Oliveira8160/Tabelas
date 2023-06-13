@@ -16,16 +16,19 @@
       <div class="mb-3">
         <label for="nome" class="form-label">Nome:</label>
         <input type="text" formControlName="nome" class="form-control" id="nome" placeholder="Julho Ceverino">
+        <div *ngIf="submitted && nome.invalid" class="text-danger">Nome Invalido</div>
       </div>
 
       <div class="mb-3">
         <label for="email" class="form-label">Email:</label>
         <input type="email" formControlName="email" class="form-control" id="email" placeholder="name@example.com">
+        <div *ngIf="submitted && email.invalid" class="text-danger">E-mail Invalido</div>
       </div>
 
       <div class="mb-3">
         <label for="telefone" class="form-label">Telefone:</label>
         <input type="number" formControlName="telefone" class="form-control" id="telefone" placeholder="** *********">
+        <div *ngIf="submitted && telefone.invalid" class="text-danger">Telefone Invalido</div>
       </div>
 
       <div class="mb-3 d-flex justify-content-center">
