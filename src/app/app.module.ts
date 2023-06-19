@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { FornecedoresComponent } from './fornecedores/fornecedores.component';
 import { HomeComponent } from './home/home.component';
+import { ClientFormComponent } from './client-form/client-form.component';
+import { FornecedorFormComponent } from './fornecedor-form/fornecedor-form.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { HomeComponent } from './home/home.component';
     ClientsComponent,
     HeaderComponent,
     FornecedoresComponent,
-    HomeComponent
+    HomeComponent,
+    ClientFormComponent,
+    FornecedorFormComponent
   ],
   imports: [
     BrowserModule,

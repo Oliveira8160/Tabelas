@@ -12,24 +12,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ClientsComponent implements OnInit{
 
   clients : client[] = [];
-  formGroupClient : FormGroup;
+  client : client = {} as client;
   isEditing : boolean = false;
-  submitted : boolean = false;
 
-  constructor (private ClientService : ClientService,
-               private formBuilder : FormBuilder
-    ){
 
-      this.formGroupClient = formBuilder.group({
+  constructor (private ClientService : ClientService){}
 
-        id : [''],
-        Primeiro_nome : ['', [Validators.required]],
-        Segundo_nome : ['', [Validators.required]],
-        email : ['', [Validators.email]],
-        telefone : ['', [Validators.required]]
-      })
 
-    }
   ngOnInit(): void {
     this.loadClients();
   }
@@ -41,44 +30,36 @@ export class ClientsComponent implements OnInit{
     })
   }
 
-  save(){
-    this.submitted = true;
-
-    if(this.formGroupClient.valid){
+  onSaveEvent(client : client){
 
       if(this.isEditing){
 
-        this.ClientService.update(this.formGroupClient.value).subscribe
+        this.ClientService.update(client).subscribe
         ({
-
           next : () => {
             this.loadClients();
-            this.formGroupClient.reset();
             this.isEditing = false;
-            this.submitted = false;
           }
 
         })
 
       }
+
       else
       {
-        this.ClientService.save(this.formGroupClient.value).subscribe
+        this.ClientService.save(client).subscribe
             ({
                 next : data => {
                   this.clients.push(data)
-                  this.formGroupClient.reset()
-                  this.submitted = false;
                 }
             })
       }
 
     }
 
-  }
 
   edit(client : client){
-    this.formGroupClient.setValue(client);
+    this.client = client;
     this.isEditing = true;
   }
   delete(client : client){
@@ -88,24 +69,8 @@ export class ClientsComponent implements OnInit{
     })
   }
 
-  recarregar()
-  {
-    this.formGroupClient.reset();
-    this.isEditing = false;
-    this.submitted = false;
-  }
 
-  get Primeiro_nome() : any {
-    return this.formGroupClient.get("Primeiro_nome");
-  }
-  get Segundo_nome() : any {
-    return this.formGroupClient.get("Segundo_nome");
-  }
-  get email() : any {
-    return this.formGroupClient.get("email");
-  }
-  get telefone() : any {
-    return this.formGroupClient.get("telefone");
-  }
+
+
 
 }

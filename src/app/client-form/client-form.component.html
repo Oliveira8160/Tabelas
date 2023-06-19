@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-8 m-auto">
+
+    <form [formGroup]="formGroupClient">
+
+
+      <br>
+
+      <figure class="text-center">
+        <blockquote class="blockquote">
+          <h1>Cadastro de Cilentes</h1>
+        </blockquote>
+      </figure>
+
+
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome:</label>
+        <div class="input-group">
+          <input type="text" formControlName="Primeiro_nome" aria-label="First name" class="form-control" id="Primeiro nome" placeholder="Julho">
+          <input type="text" formControlName="Segundo_nome" aria-label="Last name" class="form-control" id="Segundo nome" placeholder="Ceverino">
+        </div>
+        <div *ngIf="submitted && Primeiro_nome.invalid" class="text-danger">Nome Invalido</div>
+        <div *ngIf="submitted && Segundo_nome.invalid" class="text-danger">Sobrenome Invalido</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" formControlName="email" class="form-control" id="email" placeholder="name@example.com">
+        <div *ngIf="submitted && email.invalid" class="text-danger">E-mail Invalido</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="telefone" class="form-label">Telefone:</label>
+        <input type="number" formControlName="telefone" class="form-control" id="telefone" placeholder="** *********">
+        <div *ngIf="submitted && telefone.invalid" class="text-danger">Telefone Invalido</div>
+      </div>
+
+      <div class="mb-3 d-flex justify-content-center">
+        <button class="btn btn-outline-dark" style="border: transparent;" (click)="save()" >
+          <i class="bi bi-arrow-down-circle-fill fs-2 mb-3"></i>
+        </button>
+        <button class="btn btn-outline-dark" style="margin-left: 50px; border: transparent;" (click)="recarregar()" >
+          <i class="bi bi-arrow-counterclockwise fs-2 mb-3"></i>
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
