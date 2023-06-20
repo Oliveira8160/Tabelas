@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { client } from '../client';
+import { Client } from '../client';
 import { ClientService } from './../client.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,14 +11,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ClientsComponent implements OnInit{
 
-  clients : client[] = [];
-  client : client = {} as client;
+  clients : Client[] = [];
+  client : Client = {} as Client;
   isEditing : boolean = false;
 
+  constructor (private ClientService : ClientService,
+    ){
 
-  constructor (private ClientService : ClientService){}
-
-
+    }
   ngOnInit(): void {
     this.loadClients();
   }
@@ -30,12 +30,13 @@ export class ClientsComponent implements OnInit{
     })
   }
 
-  onSaveEvent(client : client){
+  onSaveEvent(){
 
       if(this.isEditing){
 
-        this.ClientService.update(client).subscribe
+        this.ClientService.update(this.client).subscribe
         ({
+
           next : () => {
             this.loadClients();
             this.isEditing = false;
@@ -44,10 +45,9 @@ export class ClientsComponent implements OnInit{
         })
 
       }
-
       else
       {
-        this.ClientService.save(client).subscribe
+        this.ClientService.save(this.client).subscribe
             ({
                 next : data => {
                   this.clients.push(data)
@@ -58,19 +58,15 @@ export class ClientsComponent implements OnInit{
     }
 
 
-  edit(client : client){
+  edit(client : Client){
     this.client = client;
     this.isEditing = true;
   }
-  delete(client : client){
+  delete(client : Client){
     this.ClientService.delete(client).subscribe
     ({
       next : () => this.loadClients()
     })
   }
-
-
-
-
 
 }
